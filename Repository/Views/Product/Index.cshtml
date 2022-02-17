@@ -1,0 +1,65 @@
+﻿@model Repository.Models.ProductModel
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <form method="post" action="/Product/Index" class="d-inline-flex">
+        <input type="search" name="name" class="form-control" placeholder="Arama" />
+        <button class="btn btn-success" type="submit">Ara</button>
+    </form>
+</div>
+<hr />
+<a class="btn btn-info float-right" href="/Product/Ekle">Ekle</a>
+<a class="btn btn-info float-right" href="/Product/Sec">Ürün Seç</a>
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.Products.ProductID)</th>
+            <th>@Html.DisplayNameFor(x => x.Products.ProductName)</th>
+            <th>@Html.DisplayNameFor(x => x.Products.UnitPrice)</th>
+            <th>@Html.DisplayNameFor(x => x.Products.QuantityPerUnit)</th>
+            <th>@Html.DisplayNameFor(x => x.Products.Categories.CategoryName)</th>
+            <th>@Html.DisplayNameFor(x => x.Products.Discontinued)</th>
+           
+            <th>Detay</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.plist)
+        {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.QuantityPerUnit</td>
+            <td>@item.Categories.CategoryName</td>
+            @if (item.Categories != null)
+            {
+                <td>@item.Discontinued</td>
+
+            }
+                else
+                {
+                <td>"  "</td>
+                }
+            <td class="text-center btn btn-info">
+                <a href="/Product/Detay/@item.ProductID">Detay</a>
+
+            </td>
+            <td>
+                <a href="/Product/Guncelle/@item.ProductID">Güncelle</a>
+            </td>
+            <td>
+                <a href="/Product/Sil/@item.ProductID">Sil</a>
+            </td>
+        </tr>
+        }
+
+
+
+    </tbody>
+
+
+</table>
+

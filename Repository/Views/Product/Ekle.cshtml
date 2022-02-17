@@ -1,0 +1,67 @@
+﻿@model Repository.Models.ProductModel
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<h2>Ekle</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @*<div class="form-group">
+            @Html.LabelFor(x => x.Products.ProductID, htmlAttributes: new { @class = "control-label col-md-2", @readonly = true })
+            <div class="col-md-10">
+
+                @Html.EditorFor(x => x.Products.ProductID, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Products.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.EditorFor(x => x.Products.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Products.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.EditorFor(x => x.Products.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Products.QuantityPerUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.EditorFor(x => x.Products.QuantityPerUnit, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Products.Categories.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(x => x.Products.CategoryID, Model.categorylist, "**Kategori Seçiniz", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Products.Discontinued, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(x => x.Products.Discontinued, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Ekle" class="btn btn-info" />
+        </div>
+
+    </div>
+}
+<div>
+    @Html.ActionLink("Listeye Dön", "Index")
+</div>

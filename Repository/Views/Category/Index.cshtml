@@ -1,0 +1,50 @@
+﻿@model Repository.Models.CategoriesModel
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <form method="post" action="/Category/Index" class="d-inline-flex">
+        <input type="search" name="name" class="form-control" placeholder="Arama"/>
+        <button class="btn btn-success" type="submit">Ara</button>
+    </form>
+</div>
+<hr />
+<a class="btn btn-info float-right" href="/Category/Ekle">Ekle</a>
+<a class="btn btn-info float-right" href="/Category/Sec">Kategori Seç</a>
+<table class="table table-bordered table table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.Categories.CategoryID)</th>
+            <th>@Html.DisplayNameFor(x => x.Categories.CategoryName)</th>
+            <th>@Html.DisplayNameFor(x => x.Categories.Description)</th>
+            <th>Detay</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.clist)
+        {
+        <tr>
+            <td>@item.CategoryID</td>
+            <td>@item.CategoryName</td>
+            <td>@item.Description</td>
+            <td class="text-center">
+                <a href="/Category/Detay/@item.CategoryID">Detay</a>
+
+            </td>
+            <td>
+                <a href="/Category/Guncelle/@item.CategoryID">Güncelle</a>
+            </td>
+            <td>
+                <a href="/Category/Sil/@item.CategoryID">Sil</a>
+            </td>
+        </tr>
+        }
+
+
+
+    </tbody>
+
+
+</table>
+
